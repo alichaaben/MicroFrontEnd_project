@@ -10,7 +10,8 @@
     "serve:ssr:host-app": "node dist/host-app/server/server.mjs",
     "serve:ssr:MFE_GestionCV-app": "node dist/mfe-gestion-cv-app/server/server.mjs",
     "serve:ssr:MFE_GestionEmp-app": "node dist/mfe-gestion-emp-app/server/server.mjs",
-    "serve:ssr:MFE_GestionProjet-app": "node dist/mfe-gestion-projet-app/server/server.mjs"
+    "serve:ssr:MFE_GestionProjet-app": "node dist/mfe-gestion-projet-app/server/server.mjs",
+    "serve:ssr:MFE_Affectation-app": "node dist/mfe-affectation-app/server/server.mjs"
   },
   "private": true,
   "dependencies": {
