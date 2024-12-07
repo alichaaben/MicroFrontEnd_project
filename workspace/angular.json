@@ -560,11 +560,10 @@
 			"prefix": "app",
 			"architect": {
 				"build": {
-					"builder": "@angular-devkit/build-angular:application",
+					"builder": "ngx-build-plus:browser",
 					"options": {
 						"outputPath": "dist/auth-app",
 						"index": "projects/auth-app/src/index.html",
-						"browser": "projects/auth-app/src/main.ts",
 						"polyfills": [
 							"zone.js"
 						],
@@ -573,18 +572,21 @@
 						"assets": [
 							{
 								"glob": "**/*",
-								"input": "projects/auth-app/public"
+								"input": "projects/auth-app/public",
+								"output": "."
 							}
 						],
 						"styles": [
 							"projects/auth-app/src/styles.scss"
 						],
 						"scripts": [],
-						"server": "projects/auth-app/src/main.server.ts",
 						"outputMode": "server",
 						"ssr": {
 							"entry": "projects/auth-app/src/server.ts"
-						}
+						},
+						"main": "projects/auth-app/src/main.ts",
+						"extraWebpackConfig": "projects/auth-app/webpack.config.js",
+						"commonChunk": false
 					},
 					"configurations": {
 						"production": {
@@ -600,7 +602,8 @@
 									"maximumError": "8kB"
 								}
 							],
-							"outputHashing": "all"
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/auth-app/webpack.prod.config.js"
 						},
 						"development": {
 							"optimization": false,
@@ -611,16 +614,22 @@
 					"defaultConfiguration": "production"
 				},
 				"serve": {
-					"builder": "@angular-devkit/build-angular:dev-server",
+					"builder": "ngx-build-plus:dev-server",
 					"configurations": {
 						"production": {
-							"buildTarget": "Auth-app:build:production"
+							"buildTarget": "Auth-app:build:production",
+							"extraWebpackConfig": "projects/auth-app/webpack.prod.config.js"
 						},
 						"development": {
 							"buildTarget": "Auth-app:build:development"
 						}
 					},
-					"defaultConfiguration": "development"
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4200,
+						"publicHost": "http://localhost:4200",
+						"extraWebpackConfig": "projects/auth-app/webpack.config.js"
+					}
 				},
 				"extract-i18n": {
 					"builder": "@angular-devkit/build-angular:extract-i18n"
