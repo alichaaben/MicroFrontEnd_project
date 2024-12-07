@@ -451,11 +451,10 @@
 			"prefix": "app",
 			"architect": {
 				"build": {
-					"builder": "@angular-devkit/build-angular:application",
+					"builder": "ngx-build-plus:browser",
 					"options": {
 						"outputPath": "dist/mfe-affectation-app",
 						"index": "projects/mfe-affectation-app/src/index.html",
-						"browser": "projects/mfe-affectation-app/src/main.ts",
 						"polyfills": [
 							"zone.js"
 						],
@@ -464,18 +463,21 @@
 						"assets": [
 							{
 								"glob": "**/*",
-								"input": "projects/mfe-affectation-app/public"
+								"input": "projects/mfe-affectation-app/public",
+								"output": "."
 							}
 						],
 						"styles": [
 							"projects/mfe-affectation-app/src/styles.scss"
 						],
 						"scripts": [],
-						"server": "projects/mfe-affectation-app/src/main.server.ts",
 						"outputMode": "server",
 						"ssr": {
 							"entry": "projects/mfe-affectation-app/src/server.ts"
-						}
+						},
+						"main": "projects/mfe-affectation-app/src/main.ts",
+						"extraWebpackConfig": "projects/mfe-affectation-app/webpack.config.js",
+						"commonChunk": false
 					},
 					"configurations": {
 						"production": {
@@ -491,7 +493,8 @@
 									"maximumError": "8kB"
 								}
 							],
-							"outputHashing": "all"
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/mfe-affectation-app/webpack.prod.config.js"
 						},
 						"development": {
 							"optimization": false,
@@ -502,16 +505,22 @@
 					"defaultConfiguration": "production"
 				},
 				"serve": {
-					"builder": "@angular-devkit/build-angular:dev-server",
+					"builder": "ngx-build-plus:dev-server",
 					"configurations": {
 						"production": {
-							"buildTarget": "MFE_Affectation-app:build:production"
+							"buildTarget": "MFE_Affectation-app:build:production",
+							"extraWebpackConfig": "projects/mfe-affectation-app/webpack.prod.config.js"
 						},
 						"development": {
 							"buildTarget": "MFE_Affectation-app:build:development"
 						}
 					},
-					"defaultConfiguration": "development"
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4205,
+						"publicHost": "http://localhost:4205",
+						"extraWebpackConfig": "projects/mfe-affectation-app/webpack.config.js"
+					}
 				},
 				"extract-i18n": {
 					"builder": "@angular-devkit/build-angular:extract-i18n"
