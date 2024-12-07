@@ -233,11 +233,10 @@
 			"prefix": "app",
 			"architect": {
 				"build": {
-					"builder": "@angular-devkit/build-angular:application",
+					"builder": "ngx-build-plus:browser",
 					"options": {
 						"outputPath": "dist/mfe-gestion-emp-app",
 						"index": "projects/mfe-gestion-emp-app/src/index.html",
-						"browser": "projects/mfe-gestion-emp-app/src/main.ts",
 						"polyfills": [
 							"zone.js"
 						],
@@ -246,18 +245,21 @@
 						"assets": [
 							{
 								"glob": "**/*",
-								"input": "projects/mfe-gestion-emp-app/public"
+								"input": "projects/mfe-gestion-emp-app/public",
+								"output": "."
 							}
 						],
 						"styles": [
 							"projects/mfe-gestion-emp-app/src/styles.scss"
 						],
 						"scripts": [],
-						"server": "projects/mfe-gestion-emp-app/src/main.server.ts",
 						"outputMode": "server",
 						"ssr": {
 							"entry": "projects/mfe-gestion-emp-app/src/server.ts"
-						}
+						},
+						"main": "projects/mfe-gestion-emp-app/src/main.ts",
+						"extraWebpackConfig": "projects/mfe-gestion-emp-app/webpack.config.js",
+						"commonChunk": false
 					},
 					"configurations": {
 						"production": {
@@ -273,7 +275,8 @@
 									"maximumError": "8kB"
 								}
 							],
-							"outputHashing": "all"
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/mfe-gestion-emp-app/webpack.prod.config.js"
 						},
 						"development": {
 							"optimization": false,
@@ -284,16 +287,22 @@
 					"defaultConfiguration": "production"
 				},
 				"serve": {
-					"builder": "@angular-devkit/build-angular:dev-server",
+					"builder": "ngx-build-plus:dev-server",
 					"configurations": {
 						"production": {
-							"buildTarget": "MFE_GestionEmp-app:build:production"
+							"buildTarget": "MFE_GestionEmp-app:build:production",
+							"extraWebpackConfig": "projects/mfe-gestion-emp-app/webpack.prod.config.js"
 						},
 						"development": {
 							"buildTarget": "MFE_GestionEmp-app:build:development"
 						}
 					},
-					"defaultConfiguration": "development"
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4203,
+						"publicHost": "http://localhost:4203",
+						"extraWebpackConfig": "projects/mfe-gestion-emp-app/webpack.config.js"
+					}
 				},
 				"extract-i18n": {
 					"builder": "@angular-devkit/build-angular:extract-i18n"
