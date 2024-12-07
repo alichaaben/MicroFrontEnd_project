@@ -342,11 +342,10 @@
 			"prefix": "app",
 			"architect": {
 				"build": {
-					"builder": "@angular-devkit/build-angular:application",
+					"builder": "ngx-build-plus:browser",
 					"options": {
 						"outputPath": "dist/mfe-gestion-projet-app",
 						"index": "projects/mfe-gestion-projet-app/src/index.html",
-						"browser": "projects/mfe-gestion-projet-app/src/main.ts",
 						"polyfills": [
 							"zone.js"
 						],
@@ -355,18 +354,21 @@
 						"assets": [
 							{
 								"glob": "**/*",
-								"input": "projects/mfe-gestion-projet-app/public"
+								"input": "projects/mfe-gestion-projet-app/public",
+								"output": "."
 							}
 						],
 						"styles": [
 							"projects/mfe-gestion-projet-app/src/styles.scss"
 						],
 						"scripts": [],
-						"server": "projects/mfe-gestion-projet-app/src/main.server.ts",
 						"outputMode": "server",
 						"ssr": {
 							"entry": "projects/mfe-gestion-projet-app/src/server.ts"
-						}
+						},
+						"main": "projects/mfe-gestion-projet-app/src/main.ts",
+						"extraWebpackConfig": "projects/mfe-gestion-projet-app/webpack.config.js",
+						"commonChunk": false
 					},
 					"configurations": {
 						"production": {
@@ -382,7 +384,8 @@
 									"maximumError": "8kB"
 								}
 							],
-							"outputHashing": "all"
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/mfe-gestion-projet-app/webpack.prod.config.js"
 						},
 						"development": {
 							"optimization": false,
@@ -393,16 +396,22 @@
 					"defaultConfiguration": "production"
 				},
 				"serve": {
-					"builder": "@angular-devkit/build-angular:dev-server",
+					"builder": "ngx-build-plus:dev-server",
 					"configurations": {
 						"production": {
-							"buildTarget": "MFE_GestionProjet-app:build:production"
+							"buildTarget": "MFE_GestionProjet-app:build:production",
+							"extraWebpackConfig": "projects/mfe-gestion-projet-app/webpack.prod.config.js"
 						},
 						"development": {
 							"buildTarget": "MFE_GestionProjet-app:build:development"
 						}
 					},
-					"defaultConfiguration": "development"
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4204,
+						"publicHost": "http://localhost:4204",
+						"extraWebpackConfig": "projects/mfe-gestion-projet-app/webpack.config.js"
+					}
 				},
 				"extract-i18n": {
 					"builder": "@angular-devkit/build-angular:extract-i18n"
