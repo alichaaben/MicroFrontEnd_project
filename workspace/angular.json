@@ -302,6 +302,106 @@
           }
         }
       }
+    },
+    "MFE_GestionProjet-app": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/mfe-gestion-projet-app",
+      "sourceRoot": "projects/mfe-gestion-projet-app/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/mfe-gestion-projet-app",
+            "index": "projects/mfe-gestion-projet-app/src/index.html",
+            "browser": "projects/mfe-gestion-projet-app/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/mfe-gestion-projet-app/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/mfe-gestion-projet-app/public"
+              }
+            ],
+            "styles": [
+              "projects/mfe-gestion-projet-app/src/styles.scss"
+            ],
+            "scripts": [],
+            "server": "projects/mfe-gestion-projet-app/src/main.server.ts",
+            "outputMode": "server",
+            "ssr": {
+              "entry": "projects/mfe-gestion-projet-app/src/server.ts"
+            }
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "MFE_GestionProjet-app:build:production"
+            },
+            "development": {
+              "buildTarget": "MFE_GestionProjet-app:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/mfe-gestion-projet-app/tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/mfe-gestion-projet-app/public"
+              }
+            ],
+            "styles": [
+              "projects/mfe-gestion-projet-app/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
     }
   },
   "cli": {
