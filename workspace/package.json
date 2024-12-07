@@ -12,10 +12,12 @@
     "serve:ssr:MFE_GestionEmp-app": "node dist/mfe-gestion-emp-app/server/server.mjs",
     "serve:ssr:MFE_GestionProjet-app": "node dist/mfe-gestion-projet-app/server/server.mjs",
     "serve:ssr:MFE_Affectation-app": "node dist/mfe-affectation-app/server/server.mjs",
-    "serve:ssr:Auth-app": "node dist/auth-app/server/server.mjs"
+    "serve:ssr:Auth-app": "node dist/auth-app/server/server.mjs",
+    "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
   },
   "private": true,
   "dependencies": {
+    "@angular-architects/module-federation": "^18.0.6",
     "@angular/animations": "^19.0.0",
     "@angular/common": "^19.0.0",
     "@angular/compiler": "^19.0.0",
@@ -44,6 +46,9 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.6.2"
+    "ngx-build-plus": "^18.0.0",
+    "typescript": "~5.6.2",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^5.1.4"
   }
 }
