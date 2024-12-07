@@ -3,5 +3,602 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "Auth-app": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/auth-app",
+      "sourceRoot": "projects/auth-app/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/auth-app",
+            "index": "projects/auth-app/src/index.html",
+            "browser": "projects/auth-app/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/auth-app/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/auth-app/src/favicon.ico",
+              "projects/auth-app/src/assets"
+            ],
+            "styles": [
+              "projects/auth-app/src/styles.scss"
+            ],
+            "scripts": [],
+            "server": "projects/auth-app/src/main.server.ts",
+            "prerender": true,
+            "ssr": {
+              "entry": "projects/auth-app/server.ts"
+            }
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "Auth-app:build:production"
+            },
+            "development": {
+              "buildTarget": "Auth-app:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "Auth-app:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/auth-app/tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/auth-app/src/favicon.ico",
+              "projects/auth-app/src/assets"
+            ],
+            "styles": [
+              "projects/auth-app/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "MFE_Affectation-app": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/mfe-affectation-app",
+      "sourceRoot": "projects/mfe-affectation-app/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/mfe-affectation-app",
+            "index": "projects/mfe-affectation-app/src/index.html",
+            "browser": "projects/mfe-affectation-app/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/mfe-affectation-app/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/mfe-affectation-app/src/favicon.ico",
+              "projects/mfe-affectation-app/src/assets"
+            ],
+            "styles": [
+              "projects/mfe-affectation-app/src/styles.scss"
+            ],
+            "scripts": [],
+            "server": "projects/mfe-affectation-app/src/main.server.ts",
+            "prerender": true,
+            "ssr": {
+              "entry": "projects/mfe-affectation-app/server.ts"
+            }
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "MFE_Affectation-app:build:production"
+            },
+            "development": {
+              "buildTarget": "MFE_Affectation-app:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "MFE_Affectation-app:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/mfe-affectation-app/tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/mfe-affectation-app/src/favicon.ico",
+              "projects/mfe-affectation-app/src/assets"
+            ],
+            "styles": [
+              "projects/mfe-affectation-app/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "MFE_GestionProjet-app": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/mfe-gestion-projet-app",
+      "sourceRoot": "projects/mfe-gestion-projet-app/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/mfe-gestion-projet-app",
+            "index": "projects/mfe-gestion-projet-app/src/index.html",
+            "browser": "projects/mfe-gestion-projet-app/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/mfe-gestion-projet-app/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/mfe-gestion-projet-app/src/favicon.ico",
+              "projects/mfe-gestion-projet-app/src/assets"
+            ],
+            "styles": [
+              "projects/mfe-gestion-projet-app/src/styles.scss"
+            ],
+            "scripts": [],
+            "server": "projects/mfe-gestion-projet-app/src/main.server.ts",
+            "prerender": true,
+            "ssr": {
+              "entry": "projects/mfe-gestion-projet-app/server.ts"
+            }
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "MFE_GestionProjet-app:build:production"
+            },
+            "development": {
+              "buildTarget": "MFE_GestionProjet-app:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "MFE_GestionProjet-app:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/mfe-gestion-projet-app/tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/mfe-gestion-projet-app/src/favicon.ico",
+              "projects/mfe-gestion-projet-app/src/assets"
+            ],
+            "styles": [
+              "projects/mfe-gestion-projet-app/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "MFE_GestionEmp-app": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/mfe-gestion-emp-app",
+      "sourceRoot": "projects/mfe-gestion-emp-app/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/mfe-gestion-emp-app",
+            "index": "projects/mfe-gestion-emp-app/src/index.html",
+            "browser": "projects/mfe-gestion-emp-app/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/mfe-gestion-emp-app/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/mfe-gestion-emp-app/src/favicon.ico",
+              "projects/mfe-gestion-emp-app/src/assets"
+            ],
+            "styles": [
+              "projects/mfe-gestion-emp-app/src/styles.scss"
+            ],
+            "scripts": [],
+            "server": "projects/mfe-gestion-emp-app/src/main.server.ts",
+            "prerender": true,
+            "ssr": {
+              "entry": "projects/mfe-gestion-emp-app/server.ts"
+            }
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "MFE_GestionEmp-app:build:production"
+            },
+            "development": {
+              "buildTarget": "MFE_GestionEmp-app:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "MFE_GestionEmp-app:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/mfe-gestion-emp-app/tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/mfe-gestion-emp-app/src/favicon.ico",
+              "projects/mfe-gestion-emp-app/src/assets"
+            ],
+            "styles": [
+              "projects/mfe-gestion-emp-app/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "host-app": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/host-app",
+      "sourceRoot": "projects/host-app/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/host-app",
+            "index": "projects/host-app/src/index.html",
+            "browser": "projects/host-app/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/host-app/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/host-app/src/favicon.ico",
+              "projects/host-app/src/assets"
+            ],
+            "styles": [
+              "projects/host-app/src/styles.scss"
+            ],
+            "scripts": [],
+            "server": "projects/host-app/src/main.server.ts",
+            "prerender": true,
+            "ssr": {
+              "entry": "projects/host-app/server.ts"
+            }
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "host-app:build:production"
+            },
+            "development": {
+              "buildTarget": "host-app:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "host-app:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/host-app/tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/host-app/src/favicon.ico",
+              "projects/host-app/src/assets"
+            ],
+            "styles": [
+              "projects/host-app/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "MFE_GestionCV-app": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/mfe-gestion-cv-app",
+      "sourceRoot": "projects/mfe-gestion-cv-app/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/mfe-gestion-cv-app",
+            "index": "projects/mfe-gestion-cv-app/src/index.html",
+            "browser": "projects/mfe-gestion-cv-app/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/mfe-gestion-cv-app/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/mfe-gestion-cv-app/src/favicon.ico",
+              "projects/mfe-gestion-cv-app/src/assets"
+            ],
+            "styles": [
+              "projects/mfe-gestion-cv-app/src/styles.scss"
+            ],
+            "scripts": [],
+            "server": "projects/mfe-gestion-cv-app/src/main.server.ts",
+            "prerender": true,
+            "ssr": {
+              "entry": "projects/mfe-gestion-cv-app/server.ts"
+            }
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "MFE_GestionCV-app:build:production"
+            },
+            "development": {
+              "buildTarget": "MFE_GestionCV-app:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "MFE_GestionCV-app:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/mfe-gestion-cv-app/tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/mfe-gestion-cv-app/src/favicon.ico",
+              "projects/mfe-gestion-cv-app/src/assets"
+            ],
+            "styles": [
+              "projects/mfe-gestion-cv-app/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "98e70fe1-45d4-4271-b693-61f970474ccb"
   }
 }
